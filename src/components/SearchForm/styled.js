@@ -15,12 +15,13 @@ const InputContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 34px;
+  height: 36px;
   width: 100%;
 `;
 
 const Input = styled.input`
   border: none;
+  border-radius: 4px;
   padding: 6px 4px;
   font-size: 18px;
   width: 100%;
@@ -28,10 +29,14 @@ const Input = styled.input`
 
 const InputClearButton = styled.button`
   background: none;
+  background-color: #fff;
   border: none;
+  border-radius: 4px;
   height: 100%;
   font-size: 18px;
   color: #ff3b30;
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 const SubmitButton = styled.button`
@@ -39,10 +44,12 @@ const SubmitButton = styled.button`
   border-radius: 4px;
   background: none;
   background-color: #007aff;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: bold;
   margin-left: 4px;
-  padding: 4px 6px;
+  padding: 4px 24px;
   color: #fff;
+  text-transform: uppercase;
 `;
 
 export { FormContainer, InputContainer, Input, InputClearButton, SubmitButton };
