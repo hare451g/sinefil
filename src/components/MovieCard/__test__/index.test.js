@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import MovieCard from '../index';
-import mockMovie from './__mock__/movie';
+import mockMovie from '../../../__mock__/movie';
 
 describe('Movie Card Component', () => {
   const { title, poster } = mockMovie;
