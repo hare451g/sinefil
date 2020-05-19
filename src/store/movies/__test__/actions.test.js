@@ -46,10 +46,29 @@ describe('Fetch movie success', () => {
     expect(dispatchedAction.payload.list).toEqual(expect.any(Array));
   });
 
-  it('should contain movie list from response', () => {
-    const dispatchedAction = fetchMovieSuccess(movieLists);
-    expect(dispatchedAction.payload.list).toEqual(movieLists);
-  });
+  it(
+    'should contain movie list, ' +
+      ' totalPage, totalResults, and nextPage from response',
+    () => {
+      const mockTotalResults = 953;
+      const nextPage = 2;
+      const totalPage = Math.ceil(mockTotalResults / 10);
+
+      const dispatchedAction = fetchMovieSuccess(
+        movieLists,
+        mockTotalResults,
+        nextPage,
+        totalPage,
+      );
+
+      expect(dispatchedAction.payload).toEqual({
+        totalResults: mockTotalResults,
+        list: movieLists,
+        nextPage,
+        totalPage,
+      });
+    },
+  );
 });
 
 describe('Fetch movie failed', () => {

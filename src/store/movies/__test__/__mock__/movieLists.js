@@ -81,4 +81,87 @@ const movieLists = [
   },
 ];
 
+const page2 = [
+  {
+    title: 'The Holiday',
+    year: '2006',
+    imdbID: 'tt0457939',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMTI1MDk4MzA2OF5BMl5BanBnXkFtZTYwMjQ3NDc3._V1_SX300.jpg',
+  },
+  {
+    title: 'Roman Holiday',
+    year: '1953',
+    imdbID: 'tt0046250',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMTE2MDM4MTMtZmNkZC00Y2QyLWE0YjUtMTAxZGJmODMxMDM0XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
+  },
+  {
+    title: "Mr. Bean's Holiday",
+    year: '2007',
+    imdbID: 'tt0453451',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMTM2NzQ1Mzc4M15BMl5BanBnXkFtZTcwNTk3NjA1MQ@@._V1_SX300.jpg',
+  },
+  {
+    title: 'Last Holiday',
+    year: '2006',
+    imdbID: 'tt0408985',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMzY4ZjcxOTItNWQwOC00MmMxLTkzMjYtZmQwMTJiMGY5Y2JlXkEyXkFqcGdeQXVyMTAwMzUyOTc@._V1_SX300.jpg',
+  },
+  {
+    title: 'Holiday',
+    year: '2014',
+    imdbID: 'tt2556308',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMTVkMzljMzUtZmIxMS00YWNlLTlkNDMtYmU0Nzc3MjU3OGUwXkEyXkFqcGdeQXVyODMyODMxNDY@._V1_SX300.jpg',
+  },
+  {
+    title: 'What We Did on Our Holiday',
+    year: '2014',
+    imdbID: 'tt2725962',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMTQzNzgxMjUwN15BMl5BanBnXkFtZTgwMjgwNDY3NTE@._V1_SX300.jpg',
+  },
+  {
+    title: "Monsieur Hulot's Holiday",
+    year: '1953',
+    imdbID: 'tt0046487',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMTk0OTc0Mjc1MV5BMl5BanBnXkFtZTgwMjI3ODYxMTE@._V1_SX300.jpg',
+  },
+  {
+    title: 'The Best Man Holiday',
+    year: '2013',
+    imdbID: 'tt2083355',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMjU0MTI1MDg5Ml5BMl5BanBnXkFtZTgwNzc2MTMzMDE@._V1_SX300.jpg',
+  },
+  {
+    title: 'Holiday',
+    year: '1938',
+    imdbID: 'tt0030241',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMTg4MDExMzIxOV5BMl5BanBnXkFtZTgwODg2MjcyMjE@._V1_SX300.jpg',
+  },
+  {
+    title: 'The Star Wars Holiday Special',
+    year: '1978',
+    imdbID: 'tt0193524',
+    type: 'movie',
+    poster:
+      'https://m.media-amazon.com/images/M/MV5BMjJjMjEwMWEtZDcyNC00ODM3LThhZDctNTU0YzU1ZjQ1MmIyXkEyXkFqcGdeQXVyMjg5NDMwMQ@@._V1_SX300.jpg',
+  },
+];
+export { page2 };
 export default movieLists;

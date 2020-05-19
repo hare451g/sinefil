@@ -27,6 +27,9 @@ const initialState = {
   },
   search: '',
   page: 1,
+  totalPage: 1,
+  totalResults: 0,
+  nextPage: null,
 };
 
 function movieReducer(state = initialState, action) {
@@ -54,6 +57,9 @@ function movieReducer(state = initialState, action) {
         draft.list = Array.from(
           new Set([...state.list, ...action.payload.list]),
         );
+        draft.totalResults = action.payload.totalResults;
+        draft.nextPage = action.payload.nextPage;
+        draft.totalPage = action.payload.totalPage;
         break;
 
       case CLEAR_LIST:

@@ -12,9 +12,14 @@ const fetchMovies = (keyword = '', page = 1) => ({
   payload: { keyword, page },
 });
 
-const fetchMovieSuccess = (list = []) => ({
+const fetchMovieSuccess = (
+  list = [],
+  totalResults = 0,
+  nextPage = 0,
+  totalPage = 0,
+) => ({
   type: FETCH_MOVIES_SUCCESS,
-  payload: { list },
+  payload: { list, totalResults, nextPage, totalPage },
 });
 
 const fetchMoviesFailed = (errorMessages) => ({

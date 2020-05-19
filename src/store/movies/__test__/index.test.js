@@ -7,7 +7,7 @@ import {
   unSelectMovie,
 } from '../actions';
 import movieReducer, { initialState } from '../index';
-import movieLists from './__mock__/movieLists';
+import movieLists, { page2 } from './__mock__/movieLists';
 
 describe('Movie Reducer Test', () => {
   const unknownAction = {
@@ -66,12 +66,47 @@ describe('Movie Reducer Test', () => {
   });
 
   describe('Fetch movie success', () => {
+    const mockTotalResults = 953;
+    const mockNextPage = 2;
+    const mockTotalPage = Math.ceil(mockTotalResults / 10);
+    const movieListsPage2 = page2;
+
     it('should set isFetching to false, and loaded to true', () => {
-      expect(movieReducer(undefined, fetchMovieSuccess())).toEqual({
+      const dispatchedAction = fetchMovieSuccess(
+        movieLists,
+        mockTotalResults,
+        mockNextPage,
+        mockTotalPage,
+      );
+
+      expect(movieReducer(undefined, dispatchedAction)).toEqual({
         ...initialState,
         isFetching: false,
         fetched: true,
+        list: movieLists,
+        totalResults: mockTotalResults,
+        nextPage: mockNextPage,
+        totalPage: mockTotalPage,
       });
+    });
+
+    it('should merge with previous array when change to next page', () => {
+      const state = {
+        ...initialState,
+        fetched: true,
+        list: movieLists,
+      };
+
+      const dispatchedAction = fetchMovieSuccess(
+        movieListsPage2,
+        mockTotalResults,
+        mockNextPage,
+        mockTotalPage,
+      );
+
+      const reducer = movieReducer(state, dispatchedAction);
+
+      expect(reducer.list).toEqual([...movieLists, ...movieListsPage2]);
     });
 
     it('should set fetched movies into movie reducer list', () => {
