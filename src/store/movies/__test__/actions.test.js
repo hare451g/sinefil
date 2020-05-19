@@ -4,6 +4,7 @@ import {
   fetchMoviesFailed,
   clearList,
   selectMovie,
+  unSelectMovie,
 } from '../actions';
 import {
   FETCH_MOVIES,
@@ -11,6 +12,7 @@ import {
   FETCH_MOVIES_FAILED,
   CLEAR_LIST,
   SELECT_MOVIE,
+  UNSELECT_MOVIE,
 } from '../constants';
 import movieLists from './__mock__/movieLists';
 
@@ -72,5 +74,12 @@ describe('Select one movie', () => {
     expect(dispatchedAction.payload).toEqual({
       movie: { ...mockListItem },
     });
+  });
+});
+
+describe('Unselect movie', () => {
+  it('should return UNSELECT_MOVIE action type', () => {
+    const dispatchedAction = unSelectMovie();
+    expect(dispatchedAction.type).toEqual(UNSELECT_MOVIE);
   });
 });

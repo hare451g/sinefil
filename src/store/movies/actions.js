@@ -4,6 +4,7 @@ import {
   FETCH_MOVIES_FAILED,
   CLEAR_LIST,
   SELECT_MOVIE,
+  UNSELECT_MOVIE,
 } from './constants';
 
 const fetchMovies = () => ({
@@ -29,10 +30,15 @@ const selectMovie = (movie) => ({
   payload: { movie },
 });
 
+const unSelectMovie = () => ({
+  type: UNSELECT_MOVIE,
+});
+
 export {
   fetchMovies,
   fetchMovieSuccess,
   fetchMoviesFailed,
   clearList,
   selectMovie,
+  unSelectMovie,
 };
