@@ -1,5 +1,6 @@
-import { fetchMovies, fetchMoviesFailed } from '../actions';
+import { fetchMovies, fetchMoviesFailed, fetchMovieSuccess } from '../actions';
 import movieReducer, { initialState } from '../index';
+import movieLists from './__mock__/movieLists';
 
 describe('Movie Reducer Test', () => {
   const unknownAction = {
@@ -39,6 +40,21 @@ describe('Movie Reducer Test', () => {
       const errorMessages = 'Too many results.';
       const reducer = movieReducer(undefined, fetchMoviesFailed(errorMessages));
       expect(reducer.error).toBe(errorMessages);
+    });
+  });
+
+  describe('Fetch movie success', () => {
+    it('should set isFetching to false, and loaded to true', () => {
+      expect(movieReducer(undefined, fetchMovieSuccess())).toEqual({
+        ...initialState,
+        isFetching: false,
+        fetched: true,
+      });
+    });
+
+    it('should set fetched movies into movie reducer list', () => {
+      const reducer = movieReducer(undefined, fetchMovieSuccess(movieLists));
+      expect(reducer.list).toEqual(movieLists);
     });
   });
 });

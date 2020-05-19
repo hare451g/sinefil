@@ -3,7 +3,11 @@
   Handle state mutation for movies entity
 */
 import { produce } from 'immer';
-import { FETCH_MOVIES, FETCH_MOVIES_FAILED } from './constants';
+import {
+  FETCH_MOVIES,
+  FETCH_MOVIES_FAILED,
+  FETCH_MOVIES_SUCCESS,
+} from './constants';
 
 // initial state
 const initialState = {
@@ -36,6 +40,15 @@ function movieReducer(state = initialState, action) {
           action.payload.errorMessages || 'An unhandled error occurred';
         draft.isFetching = false;
         draft.fetched = false;
+        break;
+
+      case FETCH_MOVIES_SUCCESS:
+        draft.error = null;
+        draft.isFetching = false;
+        draft.fetched = true;
+        draft.list = Array.from(
+          new Set([...state.list, ...action.payload.list]),
+        );
         break;
 
       default:

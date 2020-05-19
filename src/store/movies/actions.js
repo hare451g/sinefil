@@ -8,8 +8,9 @@ const fetchMovies = () => ({
   type: FETCH_MOVIES,
 });
 
-const fetchMovieSuccess = () => ({
+const fetchMovieSuccess = (list = []) => ({
   type: FETCH_MOVIES_SUCCESS,
+  payload: { list },
 });
 
 const fetchMoviesFailed = (errorMessages) => ({
