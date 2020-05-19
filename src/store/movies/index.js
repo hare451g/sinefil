@@ -30,6 +30,14 @@ function movieReducer(state = initialState, action) {
         draft.isFetching = true;
         draft.fetched = false;
         break;
+
+      case FETCH_MOVIES_FAILED:
+        draft.error =
+          action.payload.errorMessages || 'An unhandled error occurred';
+        draft.isFetching = false;
+        draft.fetched = false;
+        break;
+
       default:
         break;
     }

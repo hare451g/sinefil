@@ -19,4 +19,26 @@ describe('Movie Reducer Test', () => {
       });
     });
   });
+
+  describe('Fetch movie list failed', () => {
+    it('it should set isFetching to false', () => {
+      const reducer = movieReducer(undefined, fetchMoviesFailed());
+      expect(reducer.isFetching).toBe(false);
+    });
+
+    it(
+      'it should set error message to An unhandled error occurred ' +
+        'when no error message provided',
+      () => {
+        const reducer = movieReducer(undefined, fetchMoviesFailed());
+        expect(reducer.error).toBe('An unhandled error occurred');
+      },
+    );
+
+    it('it should set error message to provided error message ', () => {
+      const errorMessages = 'Too many results.';
+      const reducer = movieReducer(undefined, fetchMoviesFailed(errorMessages));
+      expect(reducer.error).toBe(errorMessages);
+    });
+  });
 });

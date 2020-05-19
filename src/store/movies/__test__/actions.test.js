@@ -24,4 +24,11 @@ describe('Fetch movie failed', () => {
     const dispatchedAction = fetchMoviesFailed();
     expect(dispatchedAction.type).toEqual(FETCH_MOVIES_FAILED);
   });
+
+  it('Should contain error messages', () => {
+    const errorMessages = 'Unhandled Error';
+    const dispatchedAction = fetchMoviesFailed(errorMessages);
+
+    expect(dispatchedAction.payload).toEqual({ errorMessages });
+  });
 });

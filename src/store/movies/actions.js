@@ -12,8 +12,9 @@ const fetchMovieSuccess = () => ({
   type: FETCH_MOVIES_SUCCESS,
 });
 
-const fetchMoviesFailed = () => ({
+const fetchMoviesFailed = (errorMessages) => ({
   type: FETCH_MOVIES_FAILED,
+  payload: { errorMessages },
 });
 
 export { fetchMovies, fetchMovieSuccess, fetchMoviesFailed };
