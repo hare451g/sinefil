@@ -29,4 +29,12 @@ describe('Movie Card Component', () => {
       );
     });
   });
+
+  it('Should render empty lists text when array of movie is empty', () => {
+    const { getByTestId } = render(<MovieCardDeck movies={[]} />);
+
+    const emptyLabel = getByTestId('deck-empty-label');
+
+    expect(emptyLabel.innerHTML).toBe('Movie collection is empty');
+  });
 });
