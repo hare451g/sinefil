@@ -27,6 +27,12 @@ describe('Fetch movie', () => {
     const dispatchedAction = fetchMovies(keyword);
     expect(dispatchedAction.payload.keyword).toEqual(keyword);
   });
+
+  it('Should contain target page', () => {
+    const targetPage = 2;
+    const dispatchedAction = fetchMovies(undefined, 2);
+    expect(dispatchedAction.payload.page).toEqual(targetPage);
+  });
 });
 
 describe('Fetch movie success', () => {
