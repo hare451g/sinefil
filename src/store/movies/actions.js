@@ -19,7 +19,7 @@ const fetchMoviesFailed = (errorMessages) => ({
   payload: { errorMessages },
 });
 
-const clearList = (errorMessages) => ({
+const clearList = () => ({
   type: CLEAR_LIST,
 });
 
