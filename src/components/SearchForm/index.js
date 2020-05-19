@@ -7,6 +7,10 @@ function SearchForm({ onSubmit = (keyword) => {} }) {
     onSubmit(searchInputRef.current.value);
   };
 
+  const onClearButtonClick = () => {
+    searchInputRef.current.value = '';
+  };
+
   return (
     <div>
       <input
@@ -17,6 +21,9 @@ function SearchForm({ onSubmit = (keyword) => {} }) {
       />
       <button data-testid="search-button" onClick={onSearchButtonClick}>
         search
+      </button>
+      <button data-testid="clear-button" onClick={onClearButtonClick}>
+        clear
       </button>
     </div>
   );
