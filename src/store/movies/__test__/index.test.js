@@ -3,6 +3,7 @@ import {
   fetchMoviesFailed,
   fetchMovieSuccess,
   clearList,
+  selectMovie,
 } from '../actions';
 import movieReducer, { initialState } from '../index';
 import movieLists from './__mock__/movieLists';
@@ -68,6 +69,14 @@ describe('Movie Reducer Test', () => {
       const state = { ...initialState, list: movieLists };
       const reducer = movieReducer(state, clearList());
       expect(reducer.list).toEqual([]);
+    });
+  });
+
+  describe('Select one movie', () => {
+    it('Should set selectedListItem to provided movie object', () => {
+      const mockMovie = movieLists[0];
+      const reducer = movieReducer(undefined, selectMovie(mockMovie));
+      expect(reducer.selectedListItem).toEqual(mockMovie);
     });
   });
 });

@@ -8,6 +8,7 @@ import {
   FETCH_MOVIES_FAILED,
   FETCH_MOVIES_SUCCESS,
   CLEAR_LIST,
+  SELECT_MOVIE,
 } from './constants';
 
 // initial state
@@ -54,6 +55,12 @@ function movieReducer(state = initialState, action) {
 
       case CLEAR_LIST:
         draft.list = [];
+        break;
+
+      case SELECT_MOVIE:
+        draft.selectedListItem = action.payload.movie
+          ? action.payload.movie
+          : state.selectedListItem;
         break;
 
       default:
