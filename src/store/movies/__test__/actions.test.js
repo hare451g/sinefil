@@ -1,8 +1,14 @@
-import { fetchMovies, fetchMovieSuccess, fetchMoviesFailed } from '../actions';
+import {
+  fetchMovies,
+  fetchMovieSuccess,
+  fetchMoviesFailed,
+  clearList,
+} from '../actions';
 import {
   FETCH_MOVIES,
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAILED,
+  CLEAR_LIST,
 } from '../constants';
 import movieLists from './__mock__/movieLists';
 
@@ -41,5 +47,12 @@ describe('Fetch movie failed', () => {
     const dispatchedAction = fetchMoviesFailed(errorMessages);
 
     expect(dispatchedAction.payload).toEqual({ errorMessages });
+  });
+});
+
+describe('Clear List', () => {
+  it('Should contain CLEAR_LIST action type', () => {
+    const dispatchedAction = clearList();
+    expect(dispatchedAction.type).toEqual(CLEAR_LIST);
   });
 });

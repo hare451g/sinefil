@@ -2,6 +2,7 @@ import {
   FETCH_MOVIES,
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAILED,
+  CLEAR_LIST,
 } from './constants';
 
 const fetchMovies = () => ({
@@ -18,4 +19,8 @@ const fetchMoviesFailed = (errorMessages) => ({
   payload: { errorMessages },
 });
 
-export { fetchMovies, fetchMovieSuccess, fetchMoviesFailed };
+const clearList = (errorMessages) => ({
+  type: CLEAR_LIST,
+});
+
+export { fetchMovies, fetchMovieSuccess, fetchMoviesFailed, clearList };
