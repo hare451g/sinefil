@@ -3,12 +3,14 @@ import {
   fetchMovieSuccess,
   fetchMoviesFailed,
   clearList,
+  selectMovie,
 } from '../actions';
 import {
   FETCH_MOVIES,
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAILED,
   CLEAR_LIST,
+  SELECT_MOVIE,
 } from '../constants';
 import movieLists from './__mock__/movieLists';
 
@@ -54,5 +56,21 @@ describe('Clear List', () => {
   it('Should contain CLEAR_LIST action type', () => {
     const dispatchedAction = clearList();
     expect(dispatchedAction.type).toEqual(CLEAR_LIST);
+  });
+});
+
+describe('Select one movie', () => {
+  it('should return SELECT_MOVIE action type', () => {
+    const dispatchedAction = selectMovie();
+    expect(dispatchedAction.type).toEqual(SELECT_MOVIE);
+  });
+
+  it('should set selected list item to movie object', () => {
+    const mockListItem = movieLists[0];
+    const dispatchedAction = selectMovie(mockListItem);
+
+    expect(dispatchedAction.payload).toEqual({
+      movie: { ...mockListItem },
+    });
   });
 });
