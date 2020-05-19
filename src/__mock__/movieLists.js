@@ -81,7 +81,7 @@ const movieLists = [
   },
 ];
 
-const page2 = [
+const movieListPage2 = [
   {
     title: 'The Holiday',
     year: '2006',
@@ -163,5 +163,4 @@ const page2 = [
       'https://m.media-amazon.com/images/M/MV5BMjJjMjEwMWEtZDcyNC00ODM3LThhZDctNTU0YzU1ZjQ1MmIyXkEyXkFqcGdeQXVyMjg5NDMwMQ@@._V1_SX300.jpg',
   },
 ];
-export { page2 };
-export default movieLists;
+export { movieLists, movieListPage2 };

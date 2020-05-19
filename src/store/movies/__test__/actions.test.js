@@ -6,6 +6,7 @@ import {
   selectMovie,
   unSelectMovie,
 } from '../actions';
+
 import {
   FETCH_MOVIES,
   FETCH_MOVIES_SUCCESS,
@@ -14,7 +15,8 @@ import {
   SELECT_MOVIE,
   UNSELECT_MOVIE,
 } from '../constants';
-import movieLists from './__mock__/movieLists';
+
+import { movieLists } from '../../../__mock__/movieLists';
 
 describe('Fetch movie', () => {
   it('Should return FETCH_MOVIES action type', () => {
