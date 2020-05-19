@@ -1,4 +1,9 @@
-import { fetchMovies, fetchMoviesFailed, fetchMovieSuccess } from '../actions';
+import {
+  fetchMovies,
+  fetchMoviesFailed,
+  fetchMovieSuccess,
+  clearList,
+} from '../actions';
 import movieReducer, { initialState } from '../index';
 import movieLists from './__mock__/movieLists';
 
@@ -55,6 +60,14 @@ describe('Movie Reducer Test', () => {
     it('should set fetched movies into movie reducer list', () => {
       const reducer = movieReducer(undefined, fetchMovieSuccess(movieLists));
       expect(reducer.list).toEqual(movieLists);
+    });
+  });
+
+  describe('Clear movie list', () => {
+    it('should clear movie list', () => {
+      const state = { ...initialState, list: movieLists };
+      const reducer = movieReducer(state, clearList());
+      expect(reducer.list).toEqual([]);
     });
   });
 });
