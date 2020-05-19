@@ -21,6 +21,12 @@ describe('Fetch movie', () => {
     const dispatchedAction = fetchMovies();
     expect(dispatchedAction.type).toEqual(FETCH_MOVIES);
   });
+
+  it('Should contain provided keyword', () => {
+    const keyword = 'lorem';
+    const dispatchedAction = fetchMovies(keyword);
+    expect(dispatchedAction.payload.keyword).toEqual(keyword);
+  });
 });
 
 describe('Fetch movie success', () => {

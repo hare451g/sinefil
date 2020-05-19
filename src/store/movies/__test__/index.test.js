@@ -26,6 +26,12 @@ describe('Movie Reducer Test', () => {
         fetched: false,
       });
     });
+
+    it('should set keyword into search', () => {
+      const keyword = 'lorem';
+      const reducer = movieReducer(undefined, fetchMovies(keyword));
+      expect(reducer.search).toEqual(keyword);
+    });
   });
 
   describe('Fetch movie list failed', () => {

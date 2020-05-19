@@ -7,8 +7,9 @@ import {
   UNSELECT_MOVIE,
 } from './constants';
 
-const fetchMovies = () => ({
+const fetchMovies = (keyword) => ({
   type: FETCH_MOVIES,
+  payload: { keyword },
 });
 
 const fetchMovieSuccess = (list = []) => ({
