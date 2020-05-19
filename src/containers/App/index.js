@@ -1,5 +1,8 @@
 import React from 'react';
 import { Router } from '@reach/router';
+import { Provider as ReduxProvider } from 'react-redux';
+
+import store from '../../store';
 
 // containers | Pages
 import DetailPage from '../DetailPage';
@@ -8,11 +11,13 @@ import NotFoundPage from '../NotFoundPage';
 
 function App() {
   return (
-    <Router>
-      <DetailPage path="/details/:id" />
-      <HomePage path="/" />
-      <NotFoundPage path="*" />
-    </Router>
+    <ReduxProvider store={store}>
+      <Router>
+        <DetailPage path="/details/:id" />
+        <HomePage path="/" />
+        <NotFoundPage path="*" />
+      </Router>
+    </ReduxProvider>
   );
 }
 
