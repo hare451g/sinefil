@@ -4,6 +4,7 @@ import {
   InputContainer,
   Input,
   InputClearButton,
+  SubmitButton,
 } from './styled';
 
 function SearchForm({ onSubmit = (keyword) => {} }) {
@@ -34,9 +35,9 @@ function SearchForm({ onSubmit = (keyword) => {} }) {
           X
         </InputClearButton>
       </InputContainer>
-      <button data-testid="search-button" onClick={onSearchButtonClick}>
+      <SubmitButton data-testid="search-button" onClick={onSearchButtonClick}>
         search
-      </button>
+      </SubmitButton>
     </FormContainer>
   );
 }
