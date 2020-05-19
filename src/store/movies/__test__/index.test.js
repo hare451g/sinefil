@@ -4,6 +4,7 @@ import {
   fetchMovieSuccess,
   clearList,
   selectMovie,
+  unSelectMovie,
 } from '../actions';
 import movieReducer, { initialState } from '../index';
 import movieLists from './__mock__/movieLists';
@@ -78,5 +79,17 @@ describe('Movie Reducer Test', () => {
       const reducer = movieReducer(undefined, selectMovie(mockMovie));
       expect(reducer.selectedListItem).toEqual(mockMovie);
     });
+  });
+
+  describe('Unselect movie', () => {
+    it(
+      'Should remove current movie selection' +
+        'and revert back to initial state',
+      () => {
+        const state = { ...initialState, selectedListItem: movieLists[0] };
+        const reducer = movieReducer(state, unSelectMovie());
+        expect(reducer.selectedListItem).toEqual(initialState.selectedListItem);
+      },
+    );
   });
 });
