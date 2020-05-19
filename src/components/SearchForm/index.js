@@ -1,4 +1,10 @@
 import React, { useRef } from 'react';
+import {
+  FormContainer,
+  InputContainer,
+  Input,
+  InputClearButton,
+} from './styled';
 
 function SearchForm({ onSubmit = (keyword) => {} }) {
   const searchInputRef = useRef();
@@ -8,24 +14,30 @@ function SearchForm({ onSubmit = (keyword) => {} }) {
   };
 
   const onClearButtonClick = () => {
+    onSubmit('');
     searchInputRef.current.value = '';
   };
 
   return (
-    <div>
-      <input
-        type="search"
-        id="search"
-        data-testid="search-form"
-        ref={searchInputRef}
-      />
+    <FormContainer>
+      <InputContainer>
+        <Input
+          type="text"
+          id="search"
+          data-testid="search-form"
+          ref={searchInputRef}
+        />
+        <InputClearButton
+          data-testid="clear-button"
+          onClick={onClearButtonClick}
+        >
+          X
+        </InputClearButton>
+      </InputContainer>
       <button data-testid="search-button" onClick={onSearchButtonClick}>
         search
       </button>
-      <button data-testid="clear-button" onClick={onClearButtonClick}>
-        clear
-      </button>
-    </div>
+    </FormContainer>
   );
 }
 

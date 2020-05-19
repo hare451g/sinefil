@@ -4,10 +4,10 @@ import { render, fireEvent } from '@testing-library/react';
 import SearchForm from '../index';
 
 describe('Movie Card Component', () => {
-  const mockOnSubmitKeyword = jest.fn((keyword) => keyword);
   const keyword = 'se7en';
 
   it('Should handle onChange correctly', () => {
+    const mockOnSubmitKeyword = jest.fn((keyword) => keyword);
     const { getByTestId } = render(
       <SearchForm onSubmit={mockOnSubmitKeyword} />,
     );
@@ -23,6 +23,7 @@ describe('Movie Card Component', () => {
   });
 
   it('Should clear search input when clear clicked', () => {
+    const mockOnSubmitKeyword = jest.fn((keyword) => keyword);
     const { getByTestId } = render(
       <SearchForm onSubmit={mockOnSubmitKeyword} />,
     );
@@ -35,5 +36,7 @@ describe('Movie Card Component', () => {
     fireEvent.click(clearButton);
 
     expect(searchForm.value).toBe('');
+    expect(mockOnSubmitKeyword.mock.calls.length).toBe(1);
+    expect(mockOnSubmitKeyword.mock.results[0].value).toEqual('');
   });
 });
