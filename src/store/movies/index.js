@@ -37,6 +37,7 @@ function movieReducer(state = initialState, action) {
         draft.isFetching = true;
         draft.fetched = false;
         draft.search = action.payload.keyword || initialState.search;
+        draft.page = action.payload.page || initialState.page;
         break;
 
       case FETCH_MOVIES_FAILED:

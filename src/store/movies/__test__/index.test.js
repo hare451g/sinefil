@@ -32,6 +32,15 @@ describe('Movie Reducer Test', () => {
       const reducer = movieReducer(undefined, fetchMovies(keyword));
       expect(reducer.search).toEqual(keyword);
     });
+
+    it('should set page into search', () => {
+      const targetPage = 3;
+      const reducer = movieReducer(
+        undefined,
+        fetchMovies(undefined, targetPage),
+      );
+      expect(reducer.page).toEqual(targetPage);
+    });
   });
 
   describe('Fetch movie list failed', () => {
