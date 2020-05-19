@@ -1,24 +1,16 @@
 import React from 'react';
 import MovieCard from '../MovieCard';
-import { Deck, CardWrapper } from './styled';
+import { CardWrapper } from './styled';
 
 function MovieCardDeck({ movies = [] }) {
   if (movies.length > 0) {
-    return (
-      <Deck>
-        {movies.map(({ title, poster, imdbID }) => (
-          <CardWrapper data-testid={`card-${imdbID}`} key={`movie-${imdbID}`}>
-            <MovieCard title={title} poster={poster} imdbID={imdbID} />
-          </CardWrapper>
-        ))}
-      </Deck>
-    );
+    return movies.map(({ title, poster, imdbID }) => (
+      <CardWrapper data-testid={`card-${imdbID}`} key={`movie-${imdbID}`}>
+        <MovieCard title={title} poster={poster} imdbID={imdbID} />
+      </CardWrapper>
+    ));
   } else {
-    return (
-      <Deck>
-        <h3 data-testid="deck-empty-label">Movie collection is empty</h3>
-      </Deck>
-    );
+    return <h3 data-testid="deck-empty-label">Movie collection is empty</h3>;
   }
 }
 
