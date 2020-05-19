@@ -8,10 +8,12 @@ import store from '../../store';
 import DetailPage from '../DetailPage';
 import HomePage from '../HomePage';
 import NotFoundPage from '../NotFoundPage';
+import GlobalStyle from '../../components/GlobalStyle';
 
 function App() {
   return (
     <ReduxProvider store={store}>
+      <GlobalStyle />
       <Router>
         <DetailPage path="/details/:id" />
         <HomePage path="/" />
