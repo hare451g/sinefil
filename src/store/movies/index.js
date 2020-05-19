@@ -2,6 +2,8 @@
   Movie Reducer
   Handle state mutation for movies entity
 */
+import { produce } from 'immer';
+import { FETCH_MOVIES, FETCH_MOVIES_FAILED } from './constants';
 
 // initial state
 const initialState = {
@@ -21,10 +23,17 @@ const initialState = {
 };
 
 function movieReducer(state = initialState, action) {
-  switch (action.type) {
-    default:
-      return state;
-  }
+  return produce(state, (draft) => {
+    switch (action.type) {
+      case FETCH_MOVIES:
+        draft.error = null;
+        draft.isFetching = true;
+        draft.fetched = false;
+        break;
+      default:
+        break;
+    }
+  });
 }
 
 export { initialState };
