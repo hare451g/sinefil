@@ -35,6 +35,7 @@ function HomePage() {
       onNextPageClick,
       unSelectMovie,
       selectMovie,
+      clearList,
     },
   } = useMovieStore();
 
@@ -42,6 +43,10 @@ function HomePage() {
     if (!isFetching && !isFetched) {
       fetchMovies(search, 1);
     }
+    return () => {
+      unSelectMovie();
+      clearList();
+    };
   }, []);
 
   return (
