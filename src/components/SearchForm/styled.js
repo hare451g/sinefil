@@ -43,13 +43,13 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 4px;
   background: none;
-  background-color: #007aff;
   font-size: 16px;
   font-weight: bold;
   margin-left: 4px;
   padding: 4px 24px;
-  color: #fff;
   text-transform: uppercase;
+  color: ${(props) => (props.disabled ? '#8a8a8a' : '#fff')};
+  background-color: ${(props) => (props.disabled ? '#eee' : '#007aff')};
 `;
 
 export { FormContainer, InputContainer, Input, InputClearButton, SubmitButton };

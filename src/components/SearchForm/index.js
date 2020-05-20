@@ -7,7 +7,7 @@ import {
   SubmitButton,
 } from './styled';
 
-function SearchForm({ onSubmit = (keyword) => {}, keyword }) {
+function SearchForm({ onSubmit = (keyword) => {}, keyword, isLoading }) {
   const searchInputRef = useRef();
 
   useEffect(() => {
@@ -39,8 +39,12 @@ function SearchForm({ onSubmit = (keyword) => {}, keyword }) {
           X
         </InputClearButton>
       </InputContainer>
-      <SubmitButton data-testid="search-button" onClick={onSearchButtonClick}>
-        search
+      <SubmitButton
+        data-testid="search-button"
+        onClick={onSearchButtonClick}
+        disabled={isLoading}
+      >
+        {isLoading ? 'loading' : 'search'}
       </SubmitButton>
     </FormContainer>
   );

@@ -22,7 +22,7 @@ function HomePage() {
 
   useEffect(() => {
     if (!isFetching && !isFetched) {
-      fetchMovies('holiday', 1);
+      fetchMovies(search, 1);
     }
   }, []);
 
@@ -35,11 +35,15 @@ function HomePage() {
             We have thousands and counting movie collections to find, powered by
             OMDB we could find that movie that you love.
           </SubHeading>
-          <SearchForm onSubmit={onSubmit} keyword={search} />
+          <SearchForm
+            onSubmit={onSubmit}
+            keyword={search}
+            isLoading={isFetching}
+          />
         </HeroContainer>
       </HomePageContainer>
       <CardDeckContainer data-testid="deck-container">
-        <MovieCardDeck movies={list} />
+        <MovieCardDeck movies={list} isLoading={isFetching} />
       </CardDeckContainer>
     </>
   );
