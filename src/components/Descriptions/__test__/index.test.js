@@ -6,18 +6,17 @@ import mockDetails from '../../../__mock__/details';
 
 describe('Movie Card Component', () => {
   const { plot } = mockDetails;
-  const mockContents = [plot];
+  const mockContents = plot;
 
   it('Should render provided text correctly', () => {
-    const { getByTestId, getAllByTestId } = render(
+    const { getByTestId } = render(
       <Descriptions heading="Synopsis" contents={mockContents} />,
     );
 
     const heading = getByTestId('description-heading');
     expect(heading.innerHTML).toEqual('Synopsis');
 
-    const contents = getAllByTestId(/description-content-/i);
-    expect(contents.length).toEqual(mockContents.length);
-    expect(contents[0].innerHTML).toEqual(mockContents[0]);
+    const contents = getByTestId('description-content');
+    expect(contents.innerHTML).toEqual(mockContents);
   });
 });
