@@ -39,4 +39,19 @@ describe('Movie Card Component', () => {
     expect(mockOnSubmitKeyword.mock.calls.length).toBe(1);
     expect(mockOnSubmitKeyword.mock.results[0].value).toEqual('');
   });
+
+  it('Should notify loading when content is loading ', () => {
+    const { getByTestId } = render(<SearchForm isLoading />);
+    const searchButton = getByTestId('search-button');
+    expect(searchButton.innerHTML).toEqual('loading');
+    expect(searchButton).toHaveStyle('background-color: #eee');
+    expect(searchButton).toHaveStyle('color: #8a8a8a');
+  });
+
+  it('Should notify error when error occurred', () => {
+    const errorMessage = 'Keyword is required';
+    const { getByTestId } = render(<SearchForm error={errorMessage} />);
+    const searchForm = getByTestId('search-input-container');
+    expect(searchForm).toHaveStyle('border: 1px solid #ff3b30');
+  });
 });

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   FormContainer,
   InputContainer,
@@ -7,8 +7,12 @@ import {
   SubmitButton,
 } from './styled';
 
-function SearchForm({ onSubmit = (keyword) => {} }) {
+function SearchForm({ onSubmit = (keyword) => {}, keyword, isLoading, error }) {
   const searchInputRef = useRef();
+
+  useEffect(() => {
+    searchInputRef.current.value = keyword;
+  }, []);
 
   const onSearchButtonClick = () => {
     onSubmit(searchInputRef.current.value);
@@ -21,7 +25,7 @@ function SearchForm({ onSubmit = (keyword) => {} }) {
 
   return (
     <FormContainer>
-      <InputContainer>
+      <InputContainer error={error} data-testid="search-input-container">
         <Input
           type="text"
           id="search"
@@ -35,8 +39,12 @@ function SearchForm({ onSubmit = (keyword) => {} }) {
           X
         </InputClearButton>
       </InputContainer>
-      <SubmitButton data-testid="search-button" onClick={onSearchButtonClick}>
-        search
+      <SubmitButton
+        data-testid="search-button"
+        onClick={onSearchButtonClick}
+        disabled={isLoading}
+      >
+        {isLoading ? 'loading' : 'search'}
       </SubmitButton>
     </FormContainer>
   );
