@@ -41,7 +41,7 @@ const DetailsContainer = styled.div`
   padding: 32px;
   max-width: 720px;
   margin: auto;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 const DescriptionContainer = styled.div`
