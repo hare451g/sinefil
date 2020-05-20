@@ -32,8 +32,35 @@ const fetchDetailsThunk = (imdbID) => async (dispatch) => {
 
     if (response.data) {
       if (response.data.Response === 'True') {
-        // transform search results
-        dispatch(fetchDetailsSuccess(response.data));
+        // normalize details data
+        dispatch(
+          fetchDetailsSuccess({
+            title: response.data.Title,
+            year: response.data.Year,
+            rated: response.data.Rated,
+            released: response.data.Released,
+            runtime: response.data.Runtime,
+            genre: response.data.Genre,
+            director: response.data.Director,
+            writer: response.data.Writer,
+            actors: response.data.Actors,
+            plot: response.data.Plot,
+            language: response.data.Language,
+            country: response.data.Country,
+            awards: response.data.Awards,
+            poster: response.data.Poster,
+            ratings: response.data.Ratings,
+            metascore: response.data.Metascore,
+            imdbRating: response.data.imdbRating,
+            imdbVotes: response.data.imdbVotes,
+            imdbID: response.data.imdbID,
+            type: response.data.Type,
+            dvd: response.data.DVD,
+            boxOffice: response.data.BoxOffice,
+            production: response.data.Production,
+            website: response.data.Website,
+          }),
+        );
       } else if (response.data.Response === 'False') {
         throw new Error(response.data.Error);
       } else {
