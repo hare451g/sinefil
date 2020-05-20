@@ -10,6 +10,10 @@ function useMovieStore() {
   return {
     state: { ...moviesState },
     actions: {
+      onSubmit: (keyword) => {
+        dispatch(clearList());
+        dispatch(fetchMoviesThunk(keyword, 1));
+      },
       fetchMovies: (keyword, page) => dispatch(fetchMoviesThunk(keyword, page)),
       clearList: () => dispatch(clearList()),
       selectMovie: (movie) => dispatch(selectMovie(movie)),

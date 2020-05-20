@@ -12,15 +12,16 @@ describe('Home Page Container', () => {
   });
 
   it('should render default card deck with default keyword', async () => {
-    const { getAllByTestId } = render(<HomePage />);
+    const { getAllByTestId, getByTestId } = render(<HomePage />);
 
     const elements = await waitForElement(() => ({
       posters: getAllByTestId(/movie-poster-/i),
       titles: getAllByTestId(/movie-title-/i),
+      searchForm: getByTestId('search-form'),
     }));
 
     const moviesState = await store.getState('movies');
-
+    expect(elements.searchForm.value).toEqual(moviesState.movies.search);
     expect(elements.posters.length).toEqual(moviesState.movies.list.length);
     expect(elements.titles.length).toEqual(moviesState.movies.list.length);
   });

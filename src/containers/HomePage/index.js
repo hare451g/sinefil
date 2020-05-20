@@ -16,8 +16,8 @@ import useMovieStore from '../../hooks/useMovieStore';
 
 function HomePage() {
   const {
-    state: { isFetching, isFetched, list },
-    actions: { fetchMovies },
+    state: { isFetching, isFetched, list, search },
+    actions: { fetchMovies, onSubmit },
   } = useMovieStore();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function HomePage() {
             We have thousands and counting movie collections to find, powered by
             OMDB we could find that movie that you love.
           </SubHeading>
-          <SearchForm />
+          <SearchForm onSubmit={onSubmit} keyword={search} />
         </HeroContainer>
       </HomePageContainer>
       <CardDeckContainer data-testid="deck-container">

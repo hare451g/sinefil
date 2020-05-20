@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   FormContainer,
   InputContainer,
@@ -7,8 +7,12 @@ import {
   SubmitButton,
 } from './styled';
 
-function SearchForm({ onSubmit = (keyword) => {} }) {
+function SearchForm({ onSubmit = (keyword) => {}, keyword }) {
   const searchInputRef = useRef();
+
+  useEffect(() => {
+    searchInputRef.current.value = keyword;
+  }, []);
 
   const onSearchButtonClick = () => {
     onSubmit(searchInputRef.current.value);
