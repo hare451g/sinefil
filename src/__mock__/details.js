@@ -17,16 +17,16 @@ const details = {
     'https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg',
   ratings: [
     {
-      source: 'Internet Movie Database',
-      value: '8.6/10',
+      Source: 'Internet Movie Database',
+      Value: '8.6/10',
     },
     {
-      source: 'Rotten Tomatoes',
-      value: '81%',
+      Source: 'Rotten Tomatoes',
+      Value: '81%',
     },
     {
-      source: 'Metacritic',
-      value: '65/100',
+      Source: 'Metacritic',
+      Value: '65/100',
     },
   ],
   metascore: '65',
