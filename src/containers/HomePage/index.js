@@ -16,7 +16,7 @@ import useMovieStore from '../../hooks/useMovieStore';
 
 function HomePage() {
   const {
-    state: { isFetching, isFetched, list, search },
+    state: { isFetching, isFetched, list, search, error },
     actions: { fetchMovies, onSubmit },
   } = useMovieStore();
 
@@ -39,11 +39,12 @@ function HomePage() {
             onSubmit={onSubmit}
             keyword={search}
             isLoading={isFetching}
+            error={error}
           />
         </HeroContainer>
       </HomePageContainer>
       <CardDeckContainer data-testid="deck-container">
-        <MovieCardDeck movies={list} isLoading={isFetching} />
+        <MovieCardDeck movies={list} isLoading={isFetching} error={error} />
       </CardDeckContainer>
     </>
   );

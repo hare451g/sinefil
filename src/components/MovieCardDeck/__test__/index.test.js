@@ -43,4 +43,11 @@ describe('Movie Card Component', () => {
     const loadingLabel = getByTestId('deck-loading-label');
     expect(loadingLabel.innerHTML).toEqual('loading contents...');
   });
+
+  it('should render error messages when error occured', () => {
+    const errorMessage = 'Keyword is required';
+    const { getByTestId } = render(<MovieCardDeck error={errorMessage} />);
+    const errorLabel = getByTestId('deck-error-label');
+    expect(errorLabel.innerHTML).toEqual(errorMessage);
+  });
 });
