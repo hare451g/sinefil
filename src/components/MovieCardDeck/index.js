@@ -13,6 +13,7 @@ function MovieCardDeck({
   error = null,
   onNextPageClick = () => {},
   isNextPageAvailable,
+  onItemClick = (movie) => {},
 }) {
   return (
     <>
@@ -22,6 +23,7 @@ function MovieCardDeck({
               <CardWrapper
                 data-testid={`card-${imdbID}`}
                 key={`movie-${imdbID}`}
+                onClick={() => onItemClick({ title, poster, imdbID })}
               >
                 <MovieCard title={title} poster={poster} imdbID={imdbID} />
               </CardWrapper>

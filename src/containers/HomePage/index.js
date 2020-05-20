@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 // components
 import SearchForm from '../../components/SearchForm';
 import MovieCardDeck from '../../components/MovieCardDeck';
+import MovieModal from '../../components/MovieModal';
 
 // styled components
 import {
@@ -12,12 +13,29 @@ import {
   SubHeading,
   CardDeckContainer,
 } from './styled';
+
+// hooks
 import useMovieStore from '../../hooks/useMovieStore';
 
 function HomePage() {
   const {
-    state: { isFetching, isFetched, list, search, error, nextPage, totalPage },
-    actions: { fetchMovies, onSubmit, onNextPageClick },
+    state: {
+      isFetching,
+      isFetched,
+      list,
+      search,
+      error,
+      nextPage,
+      totalPage,
+      selectedListItem,
+    },
+    actions: {
+      fetchMovies,
+      onSubmit,
+      onNextPageClick,
+      unSelectMovie,
+      selectMovie,
+    },
   } = useMovieStore();
 
   useEffect(() => {
@@ -50,8 +68,14 @@ function HomePage() {
           error={error}
           onNextPageClick={onNextPageClick}
           isNextPageAvailable={nextPage <= totalPage}
+          onItemClick={selectMovie}
         />
       </CardDeckContainer>
+      <MovieModal
+        {...selectedListItem}
+        isOpen={selectedListItem.imdbID}
+        onClose={unSelectMovie}
+      />
     </>
   );
 }
