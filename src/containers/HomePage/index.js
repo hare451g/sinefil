@@ -15,7 +15,16 @@ import {
 import useMovieStore from '../../hooks/useMovieStore';
 
 function HomePage() {
-  const { state, actions } = useMovieStore();
+  const {
+    state: { isFetching, isFetched, list },
+    actions: { fetchMovies },
+  } = useMovieStore();
+
+  useEffect(() => {
+    if (!isFetching && !isFetched) {
+      fetchMovies('holiday', 1);
+    }
+  }, []);
 
   return (
     <>
@@ -30,7 +39,7 @@ function HomePage() {
         </HeroContainer>
       </HomePageContainer>
       <CardDeckContainer data-testid="deck-container">
-        <MovieCardDeck movies={state.list} />
+        <MovieCardDeck movies={list} />
       </CardDeckContainer>
     </>
   );

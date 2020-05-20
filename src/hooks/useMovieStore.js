@@ -1,11 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  fetchMovies,
-  clearList,
-  selectMovie,
-  unSelectMovie,
-} from '../store/movies/actions';
+import { clearList, selectMovie, unSelectMovie } from '../store/movies/actions';
+import fetchMoviesThunk from '../thunks/fetchMoviesThunk';
 
 function useMovieStore() {
   const moviesState = useSelector((state) => state.movies);
@@ -14,7 +10,7 @@ function useMovieStore() {
   return {
     state: { ...moviesState },
     actions: {
-      fetchMovies: (keyword, page) => dispatch(fetchMovies(keyword, page)),
+      fetchMovies: (keyword, page) => dispatch(fetchMoviesThunk(keyword, page)),
       clearList: () => dispatch(clearList()),
       selectMovie: (movie) => dispatch(selectMovie(movie)),
       unSelectMovie: () => dispatch(unSelectMovie()),
