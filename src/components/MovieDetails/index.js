@@ -2,105 +2,51 @@ import React from 'react';
 import { Link } from '@reach/router';
 // components
 import Descriptions from '../Descriptions';
-
-import styled from 'styled-components';
 import Ratings from '../Ratings';
+
 // styled-components
-const MovieTitle = styled.h1`
-  text-transform: capitalize;
-  margin-bottom: 0;
-  margin-top: 32px;
-`;
-
-const DetailsColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const SynopsisContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  margin-bottom: 42px;
-
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
-  }
-
-  > div {
-    padding-left: 16px;
-  }
-`;
-
-const MoviePoster = styled.img`
-  width: 300px;
-  @media screen and (max-width: 600px) {
-    margin: auto;
-    margin-bottom: 24px;
-  }
-`;
-
-const DetailsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  padding: 32px;
-  max-width: 720px;
-  margin: auto;
-`;
-
-const DescriptionContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 24px;
-
-  > div:first-child {
-    width: 40%;
-  }
-
-  > div:last-child {
-    width: ${(props) => (props.spanColumn ? '100%' : '60%')};
-    padding-left: ${(props) => (props.spanColumn ? '0' : '16px')};
-  }
-
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
-    > div {
-      width: 100% !important;
-      padding-left: 0px !important;
-      padding-top: 16px;
-    }
-  }
-`;
+import {
+  DescriptionContainer,
+  DetailsColumn,
+  DetailsContainer,
+  MoviePoster,
+  SynopsisContainer,
+  MovieTitle,
+} from './styled';
 
 function MovieDetails({
   title = '',
   year = '',
-  rated = '',
-  released = '',
   runtime = '',
   genre = '',
   director = '',
   writer = '',
   actors = '',
   plot = '',
-  language = '',
-  country = '',
   awards = '',
   poster = '',
   ratings = [],
-  metascore = 0,
   imdbRating = 0,
   imdbVotes = 0,
-  imdbID = null,
-  type = '',
-  dvd = '',
-  boxOffice = '',
-  production = '',
-  website = '',
+  id = null,
 }) {
+  if (!id) {
+    return (
+      <DetailsContainer>
+        <DetailsColumn>
+          <Link to="/">&lt; Back to Search </Link>
+          <MovieTitle data-testid="details-movie-title">
+            Invalid movie id
+          </MovieTitle>
+          <p data-testid="details-movie-summary">
+            please make sure your url is correct, or you could find your movie
+            from <Link to="/">here</Link>.
+          </p>
+        </DetailsColumn>
+      </DetailsContainer>
+    );
+  }
+
   // normalize ratings
   const normalizedRatings = ratings.map((rating) => ({
     label: rating.Source,

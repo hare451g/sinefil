@@ -7,11 +7,21 @@ import details from '../../../__mock__/details';
 import MovieDetails from '../index';
 
 describe('Movie Card Component', () => {
+  it('should render invalid id notice if id is null', () => {
+    const { getByText } = render(<MovieDetails />);
+    expect(getByText('Invalid movie id')).toBeInTheDocument();
+    expect(
+      getByText(/please make sure your url is correct/i),
+    ).toBeInTheDocument();
+  });
+
   it(
     'Should render without error' +
       ' and render Movie information with provided details',
     () => {
-      const { getByText, getByTestId } = render(<MovieDetails {...details} />);
+      const { getByText, getByTestId } = render(
+        <MovieDetails {...details} id={details.imdbID} />,
+      );
       expect(
         getByText(
           `${details.year} | ${details.runtime} | ${details.genre} | ${details.imdbRating} from ${details.imdbVotes} votes`,
