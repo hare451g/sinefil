@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MovieDetails from '../../components/MovieDetails';
-import details from '../../__mock__/details';
+import useDetailStore from '../../hooks/useDetailStore';
 
 function DetailPage({ id }) {
+  const {
+    state: { details, error, isFetching },
+    actions: { fetchDetails },
+  } = useDetailStore();
+
+  useEffect(() => {
+    if (id && !isFetching) {
+      fetchDetails(id);
+    }
+  }, []);
+
   return (
     <div>
-      <MovieDetails {...details} id={id} />
+      {error ? (
+        <div data-testid="details-error-label">{error}</div>
+      ) : isFetching ? (
+        <div data-testid="details-loading-label">
+          Loading movie details . . .
+        </div>
+      ) : (
+        <MovieDetails {...details} id={id} />
+      )}
     </div>
   );
 }
