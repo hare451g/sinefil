@@ -16,8 +16,8 @@ import useMovieStore from '../../hooks/useMovieStore';
 
 function HomePage() {
   const {
-    state: { isFetching, isFetched, list, search, error },
-    actions: { fetchMovies, onSubmit },
+    state: { isFetching, isFetched, list, search, error, nextPage, totalPage },
+    actions: { fetchMovies, onSubmit, onNextPageClick },
   } = useMovieStore();
 
   useEffect(() => {
@@ -44,7 +44,13 @@ function HomePage() {
         </HeroContainer>
       </HomePageContainer>
       <CardDeckContainer data-testid="deck-container">
-        <MovieCardDeck movies={list} isLoading={isFetching} error={error} />
+        <MovieCardDeck
+          movies={list}
+          isLoading={isFetching}
+          error={error}
+          onNextPageClick={onNextPageClick}
+          isNextPageAvailable={nextPage <= totalPage}
+        />
       </CardDeckContainer>
     </>
   );
