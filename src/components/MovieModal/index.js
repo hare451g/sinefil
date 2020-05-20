@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from '@reach/router';
 import { Modal, ModalContent, CloseButton } from './styled';
 
 function MovieModal({
@@ -7,6 +7,7 @@ function MovieModal({
   poster = '',
   isOpen = false,
   onClose = () => {},
+  imdbID = '',
 }) {
   return (
     <Modal isOpen={isOpen} data-testid="modal-container">
@@ -15,6 +16,7 @@ function MovieModal({
           &times;
         </CloseButton>
         <img src={poster} alt={title} data-testid="modal-poster" />
+        <Link to={`details/${imdbID}`}>Details</Link>
       </ModalContent>
     </Modal>
   );
