@@ -9,7 +9,7 @@ const fetchDetails = (imdbID = '') => ({
   payload: { imdbID },
 });
 
-const fetchDetailsFailed = (errorMessage = 'unhandled error') => ({
+const fetchDetailsFailed = (errorMessage = 'An unhandled error occurred') => ({
   type: FETCH_DETAILS_FAILED,
   payload: { errorMessage },
 });

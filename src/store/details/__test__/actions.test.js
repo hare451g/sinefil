@@ -37,7 +37,7 @@ describe('Fetch details actions', () => {
     it('should contain default error messages as a payload', () => {
       const dispatchedAction = fetchDetailsFailed();
       expect(dispatchedAction.payload).toEqual({
-        errorMessage: 'unhandled error',
+        errorMessage: 'An unhandled error occurred',
       });
     });
 
