@@ -25,7 +25,7 @@ const initialState = {
     type: '',
     poster: '',
   },
-  search: '',
+  search: 'holiday',
   page: 1,
   totalPage: 1,
   totalResults: 0,
