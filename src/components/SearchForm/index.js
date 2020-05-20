@@ -7,7 +7,7 @@ import {
   SubmitButton,
 } from './styled';
 
-function SearchForm({ onSubmit = (keyword) => {}, keyword, isLoading }) {
+function SearchForm({ onSubmit = (keyword) => {}, keyword, isLoading, error }) {
   const searchInputRef = useRef();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function SearchForm({ onSubmit = (keyword) => {}, keyword, isLoading }) {
 
   return (
     <FormContainer>
-      <InputContainer>
+      <InputContainer error={error} data-testid="search-input-container">
         <Input
           type="text"
           id="search"

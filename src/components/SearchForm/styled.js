@@ -9,7 +9,8 @@ const FormContainer = styled.div`
 `;
 
 const InputContainer = styled.div`
-  border: 1px solid #cccccc;
+  border: ${(props) =>
+    props.error ? '1px solid #ff3b30' : '1px solid #cccccc'};
   border-radius: 4px;
   display: flex;
   flex-direction: row;
