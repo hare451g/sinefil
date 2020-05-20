@@ -7,7 +7,7 @@ const HomePageContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
-  padding: 32px 0px;
+  padding: 120px 0px;
 `;
 
 const HeroContainer = styled.div`
