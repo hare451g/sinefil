@@ -37,4 +37,10 @@ describe('Movie Card Component', () => {
 
     expect(emptyLabel.innerHTML).toBe('Movie collection is empty');
   });
+
+  it('should render loading label when loading', () => {
+    const { getByTestId } = render(<MovieCardDeck isLoading />);
+    const loadingLabel = getByTestId('deck-loading-label');
+    expect(loadingLabel.innerHTML).toEqual('loading contents...');
+  });
 });

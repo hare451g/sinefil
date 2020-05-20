@@ -5,10 +5,10 @@ import { render, waitForElement, store } from '../../../utils/testUtils';
 import HomePage from '../index';
 
 describe('Home Page Container', () => {
-  it('should render empty card deck', () => {
+  it('should render loading content when mounted', () => {
     const { getByTestId } = render(<HomePage />);
-    const emptyLabel = getByTestId('deck-empty-label');
-    expect(emptyLabel.innerHTML).toEqual('Movie collection is empty');
+    const loadingLabel = getByTestId('deck-loading-label');
+    expect(loadingLabel.innerHTML).toEqual('loading contents...');
   });
 
   it('should render default card deck with default keyword', async () => {
