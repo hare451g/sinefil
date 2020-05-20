@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Card Component should render provided ratings keypair: 
+        <div>Internet Movie Database</div>
+        <div>8.6 / 10</div>
+     1`] = `
+HTMLCollection [
+  <div>
+    Internet Movie Database
+  </div>,
+  <div>
+    8.6 / 10
+  </div>,
+]
+`;
+
+exports[`Movie Card Component should render provided ratings keypair: 
+        <div>Internet Movie Database</div>
+        <div>81%</div>
+     1`] = `
+HTMLCollection [
+  <div>
+    Internet Movie Database
+  </div>,
+  <div>
+    81%
+  </div>,
+]
+`;
+
+exports[`Movie Card Component should render provided ratings keypair: 
+        <div>Metacritic</div>
+        <div>65 / 100</div>
+     1`] = `
+HTMLCollection [
+  <div>
+    Metacritic
+  </div>,
+  <div>
+    65 / 100
+  </div>,
+]
+`;
